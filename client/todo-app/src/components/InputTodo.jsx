@@ -11,7 +11,7 @@ const InputTodo = () => {
         e.preventDefault();
         try {
             const body = { description };
-            const response = fetch(`https://fullstack-demo-app.onrender.com//todos/`, {
+            const response = fetch(`https://fullstack-demo-app.onrender.com/todos/`, {
                 method: "POST",
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify(body)
