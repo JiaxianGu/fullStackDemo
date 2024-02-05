@@ -5,9 +5,19 @@ require("dotenv").config({path: "../.env"});
  */
 module.exports = {
 
+  development: {
+    client:"postgresql",
+    connection: process.env.DATABASE_URL,
+    migrations: {
+      directory: "./data/migrations",
+    },
+    seeds: { directory: "./data/seeds" }
+  },
+
   client: "postgresql",
   connection: process.env.DB_URL || {
-    host: process.env.DB_HOST || "127.0.0.1",
+    // host: process.env.DB_HOST || "127.0.0.1",
+    host:process.env.DB_HOST,
     port: process.env.DB_PORT || 5432,
     database: process.env.DB_NAME,
     user: process.env.DB_USER,
