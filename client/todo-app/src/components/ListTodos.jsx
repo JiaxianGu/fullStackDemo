@@ -1,13 +1,15 @@
 import React, { Fragment, useEffect, useState }from "react";
 import EditTodo from "./EditTodo";
+require("dotenv").config({ path: "../../../../.env" });
 
+const backendURL = process.env.backendURL;
 const ListTodos = () => {
 
     const [todos, setTodos] = useState([]);
     // delete todo function
     const deleteTodo = async(id) => {
         try {
-            const deleteTodo = await fetch(`http://localhost:8080/todos/${id}`, {
+            const deleteTodo = await fetch(`${backendURL}/todos/${id}`, {
                 method: "DELETE"
             });
             setTodos(todos.filter(todo => todo.id !== id));
@@ -21,7 +23,7 @@ const ListTodos = () => {
 
     const getTodos = async() => {
         try {
-            const response = await fetch("http://localhost:8080/todos")
+            const response = await fetch(`${backendURL}/todos/`)
             const jsonData = await response.json();
             setTodos(jsonData);
         } catch (err) {

@@ -1,5 +1,7 @@
 import React, { Fragment, useState } from "react";
+require("dotenv").config({ path: "../../../../.env" });
 
+const backendURL = process.env.backendURL;
 const EditTodo = ({ todo }) => {
     const [description, setDescription] = useState(todo.description);
 
@@ -8,7 +10,7 @@ const EditTodo = ({ todo }) => {
         e.preventDefault();
         try {
             const body = { description };
-            const response = await fetch(`http://localhost:8080/todos/${todo.id}`, {
+            const response = await fetch(`${backendURL}/todos/${todo.id}`, {
                 method: "PUT",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(body)
