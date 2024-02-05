@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from "react";
-require("dotenv").config({ path: "../../../../.env" });
+// require("dotenv").config({ path: "../../../../.env" });
 
 const backendURL = process.env.backendURL;
 const EditTodo = ({ todo }) => {
@@ -10,7 +10,7 @@ const EditTodo = ({ todo }) => {
         e.preventDefault();
         try {
             const body = { description };
-            const response = await fetch(`${backendURL}/todos/${todo.id}`, {
+            const response = await fetch(`https://fullstack-demo-app.onrender.com/todos/${todo.id}`, {
                 method: "PUT",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(body)

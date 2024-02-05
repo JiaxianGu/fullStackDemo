@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from "react";
-require("dotenv").config({ path: "../../../../.env" });
-
+// require("dotenv").config({ path: "../../../../.env" });
+ // ${backendURL}
 
 const backendURL = process.env.backendURL;
 const InputTodo = () => {
@@ -11,7 +11,7 @@ const InputTodo = () => {
         e.preventDefault();
         try {
             const body = { description };
-            const response = fetch(`${backendURL}/todos/`, {
+            const response = fetch(`https://fullstack-demo-app.onrender.com//todos/`, {
                 method: "POST",
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify(body)

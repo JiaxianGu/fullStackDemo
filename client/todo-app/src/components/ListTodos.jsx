@@ -1,6 +1,7 @@
 import React, { Fragment, useEffect, useState }from "react";
 import EditTodo from "./EditTodo";
-require("dotenv").config({ path: "../../../../.env" });
+// require('dotenv').config({ path: "../../../../../.env" });
+
 
 const backendURL = process.env.backendURL;
 const ListTodos = () => {
@@ -9,7 +10,7 @@ const ListTodos = () => {
     // delete todo function
     const deleteTodo = async(id) => {
         try {
-            const deleteTodo = await fetch(`${backendURL}/todos/${id}`, {
+            const deleteTodo = await fetch(`https://fullstack-demo-app.onrender.com/todos/${id}`, {
                 method: "DELETE"
             });
             setTodos(todos.filter(todo => todo.id !== id));
@@ -23,7 +24,7 @@ const ListTodos = () => {
 
     const getTodos = async() => {
         try {
-            const response = await fetch(`${backendURL}/todos/`)
+            const response = await fetch(`https://fullstack-demo-app.onrender.com/todos/`)
             const jsonData = await response.json();
             setTodos(jsonData);
         } catch (err) {
